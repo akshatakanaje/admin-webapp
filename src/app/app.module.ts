@@ -14,6 +14,11 @@ import { ProductsComponent } from './components/products/products.component';
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 import { UsersComponent } from './components/users/users.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductsModule } from './components/products/products.module';
+import { AuthModule } from './components/auth/auth.module';
+import { UsersModule } from './components/users/users.module';
+import { HttpClientModule } from '@angular/common/http';
+import { OrdersService } from './services/orders.service';
 
 @NgModule({
   declarations: [
@@ -25,16 +30,18 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HeaderComponent,
     NavbarComponent,
     OrdersComponent,
-    ProductsComponent,
-    SideNavbarComponent,
-    UsersComponent,
+    SideNavbarComponent, 
     NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ProductsModule,
+    AuthModule,
+    UsersModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [OrdersService],  //we dont have orders.module.ts file, so we are adding ordersService to app.module.ts
   bootstrap: [AppComponent]
 })
 export class AppModule { }
